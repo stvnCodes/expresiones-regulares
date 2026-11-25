@@ -72,33 +72,33 @@ public class MenuPatron {
   }
 
   private void probarTexto() throws IOException {
-    String texto = entrada.leerTexto("Texto: ");
-    String reemplazo = entrada.leerTexto("Reemplazar por: ");
+    String texto = entrada.leerTexto("Texto a probar: ");
+    String reemplazo = entrada.leerTexto("Cambiar lo encontrado por: ");
     mostrarMetodos(texto, reemplazo);
   }
 
   // ------------------- Resultados ------------------- //
   private void mostrarMetodos(String texto, String reemplazo) {
     System.out.println("\nTexto: \"" + texto + "\"");
-    System.out.println("matches:      " + respuesta(evaluador.matches(texto)));
-    System.out.println("lookingAt:    " + respuesta(evaluador.lookingAt(texto)));
+    System.out.println("matches (¿todo el texto cumple?): " + respuesta(evaluador.matches(texto)));
+    System.out.println("lookingAt (¿el comienzo cumple?): " + respuesta(evaluador.lookingAt(texto)));
     mostrarCoincidencias(evaluador.find(texto));
-    System.out.println("replaceAll:   " + evaluador.replaceAll(texto, reemplazo));
-    System.out.println("replaceFirst: " + evaluador.replaceFirst(texto, reemplazo));
+    System.out.println("replaceAll (cambia todas): " + evaluador.replaceAll(texto, reemplazo));
+    System.out.println("replaceFirst (cambia la primera): " + evaluador.replaceFirst(texto, reemplazo));
     mostrarPartes(evaluador.split(texto));
   }
 
   private void mostrarCoincidencias(List<String> encontradas) {
-    System.out.println("find:         " + encontradas.size() + " coincidencia(s)");
+    System.out.println("find (apariciones en el texto): " + encontradas.size());
     for (String coincidencia : encontradas) {
-      System.out.println("              " + coincidencia);
+      System.out.println("  " + coincidencia);
     }
   }
 
   private void mostrarPartes(String[] partes) {
-    System.out.println("split:        " + partes.length + " parte(s)");
+    System.out.println("split (partes que quedan al cortar): " + partes.length);
     for (String parte : partes) {
-      System.out.println("              \"" + parte + "\"");
+      System.out.println("  \"" + parte + "\"");
     }
   }
 

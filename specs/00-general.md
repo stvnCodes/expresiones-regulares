@@ -3,8 +3,8 @@
 | Spec | Contenido | Estado |
 |---|---|---|
 | 01 | Base, evaluador y menú | Aprobada |
-| 02 | Colombia: 1-4, 12, 17 y 20 | Implementada, por aprobar |
-| 03 | Fechas, horas y web: 5-8, 10 y 14 | Pendiente |
+| 02 | Colombia: 1-4, 12, 17 y 20 | Aprobada; falta que Estiven repita la prueba manual |
+| 03 | Fechas, horas y web: 5-8, 10 y 14 | Implementada, por aprobar |
 | 04 | Programación: 9, 15 y 16 | Pendiente |
 | 05 | Texto y libros: 11, 13, 18, 19 y 21 | Pendiente |
 | 06 | Revisión, PDF y ZIP | Pendiente |

@@ -5,7 +5,7 @@ Documento de estudio. No hace parte de la entrega.
 ## 1. El taller en un minuto
 > "Cada dato tiene una expresión regular que describe su forma. El programa permite verla, probarla con ejemplos y aplicar seis métodos de Java."
 
-**Avance:** base y patrones de Colombia.
+**Avance:** base, Colombia, fechas, horas y web.
 
 ## 2. Desde cero
 Una expresión regular es un molde para texto. `Pattern` guarda el molde y `Matcher` lo compara con un texto.
@@ -63,7 +63,19 @@ Tres letras, separador opcional y tres dígitos. `ABC1234` falla porque sobra un
 - `\+`, `\$` y `\.` llevan `\` porque solos tienen otro significado.
 - `(?![.,]?\d)` mira lo que sigue sin tomarlo: no deja aceptar el 12 de `$ 12.50`.
 
+### Fechas, horas y web
+
+- **Fecha:** se divide por días: 01-28 (todos los meses), 29-30 (menos febrero), 31 (siete meses) y 29/02 solo en bisiestos.
+- **Hora 24:** `\b([01]\d|2[0-3])(:[0-5]\d){2}\b`. `[01]\d` es 00-19 y `2[0-3]` es 20-23.
+- **Hora 12:** `\b(0[1-9]|1[0-2])(:[0-5]\d){2} ([AP]M|[ap]m)\b`.
+- **Correo:** usuario, `@`, partes del dominio terminadas en punto y extensión de dos letras o más.
+- **URL:** inicio, dominio, puerto opcional y ruta opcional.
+- **Contraseña:** cada `(?=...)` es un requisito que se revisa sin avanzar, como un portero con una lista. `\p{Lu}` y `\p{Ll}` son mayúscula y minúscula, incluidas Ñ y tildes; `\p{Punct}` es un símbolo.
+
 ## 6. Preguntas probables
+- **¿Por qué no basta `\d{2}/\d{2}/\d{4}` para la fecha?** Aceptaría 99/99/9999.
+- **¿Cómo detecta un bisiesto?** Los dos últimos dígitos deben ser divisibles por 4. 1900 no es bisiesto y 2000 sí, por eso 2000 va aparte.
+- **¿Qué es `(?=...)`?** Mira hacia adelante sin tomar caracteres; así se exigen varias cosas sin importar el orden.
 - **¿El código de barras revisa el dígito de control?** No. Es una cuenta matemática y la expresión solo valida la forma.
 - **¿604 es solo Medellín?** No, es de toda Antioquia. El número no permite distinguir el municipio.
 - **¿Acepta cualquier postal 0500xx?** Sí, valida la forma, no que la zona exista.

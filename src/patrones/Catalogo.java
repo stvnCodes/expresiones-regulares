@@ -14,7 +14,13 @@ public class Catalogo {
         PatronesColombia.codigoPostal(),
         PatronesColombia.telefonoFijo(),
         PatronesColombia.celular(),
+        PatronesWeb.correo(),
+        PatronesFechas.fecha(),
+        PatronesFechas.hora24(),
+        PatronesFechas.hora12(),
+        PatronesWeb.url(),
         PatronesColombia.codigoBarras(),
+        PatronesWeb.contrasena(),
         PatronesColombia.norma(),
         PatronesColombia.precio()
     };

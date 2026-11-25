@@ -69,7 +69,7 @@ Enunciado: `~/Downloads/PRÁCTICA 2 REGEX 2026-2.pdf`. Ante cualquier duda, mand
 - Agregar un patrón no debe obligar a cambiar los menús ni el evaluador.
 - Se valida la forma: no se calculan dígitos de control.
 - Placa solo de carro, con guion o espacio opcional. Postal `0500` y dos dígitos. Fijo 604 y 7 dígitos; celular 10 dígitos que inician en 3; ambos con +57 opcional.
-- Fecha según el mes y bisiestos. Hora de 12 h de 01 a 12 con AM/PM.
+- Fecha de 1900 a 2099, según el mes y bisiestos. Hora de 12 h de 01 a 12 con AM/PM.
 - Variables: tipo, nombre y valor inicial opcional, acorde al tipo en casos comunes.
 - ISBN: se aceptan 10 y 13 y se informa cuál es. Barras: EAN-13 con 770 o 771.
 - Nombres: mínimo nombre y apellido, con mayúscula inicial o todo en mayúsculas.
@@ -84,6 +84,6 @@ Enunciado: `~/Downloads/PRÁCTICA 2 REGEX 2026-2.pdf`. Ante cualquier duda, mand
 4. Programación (9, 15, 16). 5. Texto y libros (11, 13, 18, 19, 21). 6. Revisión, guía, PDF y ZIP.
 
 ## Comandos de prueba
-`javac -Xlint:all -d out/pruebas $(find src pruebas -name '*.java') && java -cp out/pruebas PruebaEvaluador && java -cp out/pruebas PruebaCatalogo && java -cp out/pruebas PruebaColombia`
+`javac -Xlint:all -d out/pruebas $(find src pruebas -name '*.java') && java -cp out/pruebas PruebaEvaluador && java -cp out/pruebas PruebaCatalogo && java -cp out/pruebas PruebaColombia && java -cp out/pruebas PruebaFechasWeb`
 
 No se incluye `.jar`: el enunciado no lo pide.
