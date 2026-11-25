@@ -36,7 +36,8 @@ Enunciado: `~/Downloads/PRÁCTICA 2 REGEX 2026-2.pdf`. Ante cualquier duda, mand
 ## Entrega
 - PDF: introducción (importancia en la validación de datos); desarrollo con una sección por patrón
   (expresión, explicación breve, válidas e inválidas, código Java de prueba y resultados);
-  conclusiones; código fuente completo.
+  conclusiones. El código fuente completo va en el ZIP y no en el PDF (decisión de Estiven;
+  el enunciado lo lista dentro del documento y ya se le avisó).
 - Diseño de referencia: `../conjunto/documentacion/Practica-Conjuntos.pdf` (su generador está en `../conjunto/documentacion/fuente`).
 - Los resultados del PDF salen de ejecutar el programa. Preguntar los aprendizajes; no inventarlos.
 - ZIP final solo con lo necesario, sin borrar el proyecto.
@@ -64,7 +65,7 @@ Enunciado: `~/Downloads/PRÁCTICA 2 REGEX 2026-2.pdf`. Ante cualquier duda, mand
 ## Decisiones aprobadas
 - Trabajo individual: Juan Estiven Posada Rúa.
 - Aplicación de consola. Se reemplaza `src/Main.java` (confirmado).
-- Paquetes: `classes` (Patron, Catalogo, Evaluador), `patrones` (definiciones por tema), `menus`, `utils` (Entrada).
+- Paquetes: `classes` (Patron, Evaluador), `patrones` (Catalogo y definiciones por tema), `menus`, `utils` (Entrada).
 - Agregar un patrón no debe obligar a cambiar los menús ni el evaluador.
 - Se valida la forma: no se calculan dígitos de control.
 - Placa solo de carro, con guion o espacio opcional. Postal `0500` y dos dígitos. Fijo 604 y 7 dígitos; celular 10 dígitos que inician en 3; ambos con +57 opcional.
@@ -83,6 +84,6 @@ Enunciado: `~/Downloads/PRÁCTICA 2 REGEX 2026-2.pdf`. Ante cualquier duda, mand
 4. Programación (9, 15, 16). 5. Texto y libros (11, 13, 18, 19, 21). 6. Revisión, guía, PDF y ZIP.
 
 ## Comandos de prueba
-`javac -Xlint:all -d out/pruebas $(find src pruebas -name '*.java') && java -cp out/pruebas PruebaEvaluador && java -cp out/pruebas PruebaCatalogo`
+`javac -Xlint:all -d out/pruebas $(find src pruebas -name '*.java') && java -cp out/pruebas PruebaEvaluador && java -cp out/pruebas PruebaCatalogo && java -cp out/pruebas PruebaColombia`
 
-También se aprobó incluir un `.jar` ejecutable en la entrega.
+No se incluye `.jar`: el enunciado no lo pide.

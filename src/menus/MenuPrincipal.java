@@ -1,6 +1,6 @@
 package menus;
 
-import classes.Catalogo;
+import patrones.Catalogo;
 import utils.Entrada;
 
 import java.io.IOException;

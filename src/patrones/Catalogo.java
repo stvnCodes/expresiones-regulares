@@ -1,16 +1,22 @@
-package classes;
+package patrones;
 
-import patrones.PatronesColombia;
+import classes.Patron;
 
 public class Catalogo {
   // ------------------- Atributos ------------------- //
   private Patron[] patrones;
 
   // ------------------- Constructores ------------------- //
-  // Para agregar un patrón basta con incluirlo aquí
+  // Siguen el orden del enunciado; para agregar un patrón basta con incluirlo aquí
   public Catalogo() {
     patrones = new Patron[] {
-        PatronesColombia.placa()
+        PatronesColombia.placa(),
+        PatronesColombia.codigoPostal(),
+        PatronesColombia.telefonoFijo(),
+        PatronesColombia.celular(),
+        PatronesColombia.codigoBarras(),
+        PatronesColombia.norma(),
+        PatronesColombia.precio()
     };
   }
 

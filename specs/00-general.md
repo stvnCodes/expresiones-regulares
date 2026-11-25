@@ -2,12 +2,12 @@
 
 | Spec | Contenido | Estado |
 |---|---|---|
-| 01 | Base, evaluador y menú | Implementada, por aprobar |
-| 02 | Colombia: 1-4, 12, 17 y 20 | Pendiente (placas se usó para probar la base) |
+| 01 | Base, evaluador y menú | Aprobada |
+| 02 | Colombia: 1-4, 12, 17 y 20 | Implementada, por aprobar |
 | 03 | Fechas, horas y web: 5-8, 10 y 14 | Pendiente |
 | 04 | Programación: 9, 15 y 16 | Pendiente |
 | 05 | Texto y libros: 11, 13, 18, 19 y 21 | Pendiente |
-| 06 | Revisión, PDF, jar y ZIP | Pendiente |
+| 06 | Revisión, PDF y ZIP | Pendiente |
 
 ## Reglas comunes
 - Cada patrón tiene formato, expresión, explicación, válidas, inválidas, texto de demostración y reemplazo.
@@ -16,4 +16,4 @@
 - Las decisiones sobre cada formato están en `CLAUDE.md`.
 
 ## Arquitectura
-`Main -> menus -> classes y utils`. `Catalogo` reúne lo que definen las clases de `patrones`.
+`Main -> menus -> patrones -> classes`. Los menús también usan `utils`. `Catalogo` reúne los patrones de su paquete. `classes` no depende de nadie.

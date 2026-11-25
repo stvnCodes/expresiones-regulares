@@ -1,5 +1,5 @@
-import classes.Catalogo;
 import menus.MenuPrincipal;
+import patrones.Catalogo;
 import utils.Entrada;
 
 import java.io.EOFException;

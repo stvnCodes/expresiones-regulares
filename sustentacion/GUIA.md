@@ -5,7 +5,7 @@ Documento de estudio. No hace parte de la entrega.
 ## 1. El taller en un minuto
 > "Cada dato tiene una expresión regular que describe su forma. El programa permite verla, probarla con ejemplos y aplicar seis métodos de Java."
 
-**Avance:** base lista, con placas como primer patrón.
+**Avance:** base y patrones de Colombia.
 
 ## 2. Desde cero
 Una expresión regular es un molde para texto. `Pattern` guarda el molde y `Matcher` lo compara con un texto.
@@ -37,7 +37,7 @@ Con `\d+` y `hoy 25 del 2026`:
 - `Patron`: los datos de un patrón.
 - `Evaluador`: los seis métodos.
 - `PatronesColombia`: crea patrones de un tema.
-- `Catalogo`: los reúne.
+- `Catalogo`: los reúne. Está en `patrones` para que `classes` no dependa de nadie.
 - `MenuPrincipal` y `MenuPatron`: interacción.
 - `Entrada`: lee y valida.
 - `Main`: arranca y atrapa errores de lectura.
@@ -47,7 +47,27 @@ Recorrido: `Main` abre `MenuPrincipal`, este pide el patrón a `Catalogo`, y `Me
 ## 5. Placas: `\b[A-Z]{3}[- ]?\d{3}\b`
 Tres letras, separador opcional y tres dígitos. `ABC1234` falla porque sobra un dígito.
 
+### Otros patrones de Colombia
+
+| Dato | Expresión | Idea |
+|---|---|---|
+| Postal | `\b0500\d{2}\b` | 05 Antioquia, 00 Medellín y dos dígitos de zona |
+| Fijo | `(\+57 ?\|\b)604[- ]?\d{3}[- ]?\d{2}[- ]?\d{2}\b` | 604 y siete dígitos |
+| Celular | `(\+57 ?\|\b)3\d{2}[- ]?\d{3}[- ]?\d{2}[- ]?\d{2}\b` | inicia en 3, diez dígitos |
+| Barras | `\b77[01]\d{10}\b` | 770 o 771 y diez dígitos: trece |
+| Normas | `\b(([Ll]ey\|[Dd]ecreto) [1-9]\d{0,3} de (18\|19\|20)\d{2}\|[Aa]rtículo [1-9]\d{0,3})\b` | ley o decreto con año, o artículo |
+| Precio | `\$ ?[1-9](\d{0,2}(\.\d{3})+\|\d*)(,\d{2})?(?![.,]?\d)` | con o sin puntos de miles, centavos opcionales |
+
+(La barra `\|` en la tabla es solo `|`, que significa "o".)
+
+- `\+`, `\$` y `\.` llevan `\` porque solos tienen otro significado.
+- `(?![.,]?\d)` mira lo que sigue sin tomarlo: no deja aceptar el 12 de `$ 12.50`.
+
 ## 6. Preguntas probables
+- **¿El código de barras revisa el dígito de control?** No. Es una cuenta matemática y la expresión solo valida la forma.
+- **¿604 es solo Medellín?** No, es de toda Antioquia. El número no permite distinguir el municipio.
+- **¿Acepta cualquier postal 0500xx?** Sí, valida la forma, no que la zona exista.
+- **¿Por qué `(\+57 ?|\b)`?** El número empieza con +57 o en un borde, así no se toma la mitad de un número más largo.
 - **¿Por qué no usa `^` y `$`?** `matches` ya exige todo el texto, y con ellos `find` no encontraría placas dentro de una frase.
 - **¿Diferencia entre `matches` y `lookingAt`?** `ABC123 hola`: `lookingAt` dice sí y `matches` no.
 - **¿Por qué `quoteReplacement`?** En un reemplazo, `$1` significa un grupo. Así se toma como texto normal.
