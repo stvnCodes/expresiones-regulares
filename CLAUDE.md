@@ -63,7 +63,7 @@ Enunciado: `~/Downloads/PRÁCTICA 2 REGEX 2026-2.pdf`. Ante cualquier duda, mand
 - Al final: revisión a fondo y lista de pruebas manuales para Estiven.
 
 ## Decisiones aprobadas
-- Trabajo individual: Juan Estiven Posada Rúa.
+- Equipo: Juan Estiven Posada Rúa, Andrés Santiago Bedoya Yepes y Carlos Eduardo Hernández Munévar.
 - Aplicación de consola. Se reemplaza `src/Main.java` (confirmado).
 - Paquetes: `classes` (Patron, Evaluador), `patrones` (Catalogo y definiciones por tema), `menus`, `utils` (Entrada).
 - Agregar un patrón no debe obligar a cambiar los menús ni el evaluador.
@@ -71,19 +71,24 @@ Enunciado: `~/Downloads/PRÁCTICA 2 REGEX 2026-2.pdf`. Ante cualquier duda, mand
 - Placa solo de carro, con guion o espacio opcional. Postal `0500` y dos dígitos. Fijo 604 y 7 dígitos; celular 10 dígitos que inician en 3; ambos con +57 opcional.
 - Fecha de 1900 a 2099, según el mes y bisiestos. Hora de 12 h de 01 a 12 con AM/PM.
 - Variables: tipo, nombre y valor inicial opcional, acorde al tipo en casos comunes.
-- ISBN: se aceptan 10 y 13 y se informa cuál es. Barras: EAN-13 con 770 o 771.
+- ISBN-13 e ISBN-10 son dos patrones; el menú indica cuál es. Barras: EAN-13 con 770 o 771.
 - Nombres: mínimo nombre y apellido, con mayúscula inicial o todo en mayúsculas.
 - Contraseña de 8 a 20: mayúscula, minúscula, dígito y símbolo, sin espacios.
 - For: se acepta `for` y `For`. Double: signo opcional, punto decimal y exponente.
 - Leyes: `Ley 100 de 1993`, `Decreto 1072 de 2015`, `Artículo 23`.
 - IEEE y APA: solo libros impresos, sin URL ni DOI.
-- Precios en pesos: `$ 12.500` o `$ 12.500,50`. Diptongos e hiatos: dos expresiones.
+- Precios en pesos: `$ 12.500` o `$ 12.500,50`. Diptongos e hiatos: dos patrones que encuentran palabras. El menú tiene 23 entradas para los 21 datos.
 
 ## Orden de specs
 1. Base, Evaluador y menú. 2. Colombia (1-4, 12, 17, 20). 3. Fechas, horas y web (5-8, 10, 14).
 4. Programación (9, 15, 16). 5. Texto y libros (11, 13, 18, 19, 21). 6. Revisión, guía, PDF y ZIP.
 
 ## Comandos de prueba
-`javac -Xlint:all -d out/pruebas $(find src pruebas -name '*.java') && java -cp out/pruebas PruebaEvaluador && java -cp out/pruebas PruebaCatalogo && java -cp out/pruebas PruebaColombia && java -cp out/pruebas PruebaFechasWeb`
+`javac -Xlint:all -d out/pruebas $(find src pruebas -name '*.java') && java -cp out/pruebas PruebaEvaluador && java -cp out/pruebas PruebaCatalogo && java -cp out/pruebas PruebaColombia && java -cp out/pruebas PruebaFechasWeb && java -cp out/pruebas PruebaProgramacion && java -cp out/pruebas PruebaTexto`
 
 No se incluye `.jar`: el enunciado no lo pide.
+
+## PDF
+`python3 documentacion/fuente/generar.py` crea `documentacion/Practica-Expresiones-Regulares.pdf`.
+`GenerarDesarrollo.java` ejecuta los patrones reales y escribe la sección de desarrollo; si un ejemplo no da lo esperado, falla.
+Las conclusiones se basan en lo que pasó en el proyecto; Estiven delegó su redacción y puede ajustarlas.

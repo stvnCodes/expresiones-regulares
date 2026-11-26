@@ -34,7 +34,8 @@ public class PatronesWeb {
     Patron patron = new Patron("Contraseña segura",
         "(?<!\\S)(?=\\S*\\p{Ll})(?=\\S*\\p{Lu})(?=\\S*\\d)(?=\\S*\\p{Punct})\\S{8,20}(?!\\S)");
     patron.setFormato("De 8 a 20 caracteres sin espacios, con una minúscula, una mayúscula, un dígito y un símbolo como mínimo.");
-    patron.setExplicacion("Cada (?=...) exige algo sin avanzar: minúscula (\\p{Ll}), mayúscula (\\p{Lu}), dígito y símbolo. \\S{8,20} toma la contraseña "
+    patron.setExplicacion("Cada (?=...) exige algo sin avanzar: minúscula (\\p{Ll}), mayúscula (\\p{Lu}), dígito y símbolo. "
+        + "\\S{8,20} toma la contraseña "
         + "y (?<!\\S) y (?!\\S) comprueban que no haya más caracteres pegados.");
     patron.setValidas("Medellin#2026", "Cafe_con3", "aB3$aB3$");
     patron.setInvalidas("medellin#2026", "MEDELLIN#2026", "Medellin#", "Medellin2026", "aB3$", "Mede llin#2026");

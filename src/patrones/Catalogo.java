@@ -7,7 +7,7 @@ public class Catalogo {
   private Patron[] patrones;
 
   // ------------------- Constructores ------------------- //
-  // Siguen el orden del enunciado; para agregar un patrón basta con incluirlo aquí
+  // Siguen el orden del enunciado. ISBN, diptongos e hiatos tienen dos entradas; para agregar un patrón basta con incluirlo aquí
   public Catalogo() {
     patrones = new Patron[] {
         PatronesColombia.placa(),
@@ -18,11 +18,21 @@ public class Catalogo {
         PatronesFechas.fecha(),
         PatronesFechas.hora24(),
         PatronesFechas.hora12(),
+        PatronesProgramacion.variable(),
         PatronesWeb.url(),
+        PatronesTexto.isbn13(),
+        PatronesTexto.isbn10(),
         PatronesColombia.codigoBarras(),
+        PatronesTexto.nombreCompleto(),
         PatronesWeb.contrasena(),
+        PatronesProgramacion.cicloFor(),
+        PatronesProgramacion.numeroDouble(),
         PatronesColombia.norma(),
-        PatronesColombia.precio()
+        PatronesReferencias.ieee(),
+        PatronesReferencias.apa(),
+        PatronesColombia.precio(),
+        PatronesTexto.diptongo(),
+        PatronesTexto.hiato()
     };
   }
 

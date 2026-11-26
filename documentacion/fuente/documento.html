@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Práctica de expresiones regulares</title><style>
+@page{size:letter;margin:2.3cm;@bottom-center{content:counter(page);font:9pt Georgia}}
+@page :first{@bottom-center{content:""}}
+body{font:11.5pt/1.55 Georgia,serif;font-variant-numeric:lining-nums;color:#111}
+.portada{height:22cm;display:flex;flex-direction:column;justify-content:space-between;text-align:center;break-after:page;padding:2cm 0;box-sizing:border-box}
+h1{font-size:25pt;margin:0}h2{font-size:17pt;break-after:avoid;margin-top:1.4em}
+h3{font-size:13pt;break-after:avoid;margin:1.6em 0 .3em}h4{font-size:11.5pt;break-after:avoid;margin:1em 0 .2em}
+table{border-collapse:collapse;width:100%;font-size:10pt;margin:.6em 0 1em}td,th{border:1px solid #999;padding:4px 8px;text-align:left}th{background:#eee}tr{break-inside:avoid}
+code{font:9pt Menlo,monospace}
+pre{font:8.5pt/1.4 Menlo,monospace;background:#f4f4f4;padding:9px 12px;white-space:pre-wrap;overflow-wrap:anywhere}
+div.codigo{break-inside:avoid}div.codigo p{margin:.6em 0 .2em}table.ejemplos td{vertical-align:top;width:50%;line-height:1.7}
+p,li{orphans:3;widows:3}
+</style></head><body>
+<section class="portada"><div>Politécnico Colombiano Jaime Isaza Cadavid</div><div><h1>Práctica de expresiones regulares</h1><p>Validación de formatos de datos en Java</p></div><div>Juan Estiven Posada Rúa<br>Andrés Santiago Bedoya Yepes<br>Carlos Eduardo Hernández Munévar</div><div>Algoritmos y Programación 4<br>Profesor: Gildardo Quintero C.</div></section>
+
+<h2>1. Introducción</h2>
+<p>Casi todos los programas reciben datos escritos por personas: un correo en un formulario, una fecha de nacimiento, un número de celular o una contraseña. Si esos datos llegan con un formato equivocado, el error aparece después, cuando ya es más difícil de encontrar. Validar a la entrada evita ese problema.</p>
+<p>Una expresión regular es una forma corta de describir cómo debe verse un texto. En lugar de revisar carácter por carácter con condiciones, se escribe un patrón como <code>\d{3}</code>, que significa "tres dígitos", y el lenguaje se encarga de compararlo. Con una sola línea se puede decidir si un dato cumple, buscarlo dentro de un texto más largo, reemplazarlo o usarlo para dividir el texto.</p>
+<p>Esta práctica desarrolla expresiones para veintiún tipos de datos comunes en Colombia y en programación. Cada una se prueba en Java con la clase <code>Pattern</code> y los métodos de <code>Matcher</code>, usando cadenas válidas e inválidas.</p>
+
+<h2>2. Desarrollo</h2>
+<p>El programa es una aplicación de consola. El usuario escoge un patrón y puede ver su formato, sus ejemplos, la demostración de los métodos o probar un texto propio. Los métodos usados son:</p>
+<table><tr><th>Método</th><th>Qué responde</th></tr>
+<tr><td><code>matches()</code></td><td>Si todo el texto cumple el patrón.</td></tr>
+<tr><td><code>lookingAt()</code></td><td>Si el comienzo del texto cumple el patrón.</td></tr>
+<tr><td><code>find()</code></td><td>Cada aparición del patrón dentro del texto y su posición.</td></tr>
+<tr><td><code>replaceAll()</code></td><td>El texto con todas las apariciones reemplazadas.</td></tr>
+<tr><td><code>replaceFirst()</code></td><td>El texto con la primera aparición reemplazada.</td></tr>
+<tr><td><code>split()</code></td><td>Las partes que quedan al cortar el texto donde aparece el patrón.</td></tr></table>
+<p>Las expresiones no llevan <code>^</code> ni <code>$</code>: <code>matches()</code> ya exige que cumpla todo el texto, y sin ellos <code>find()</code> puede encontrar el dato dentro de una frase. En su lugar se usan bordes como <code>\b</code> para no tomar un pedazo de otro dato. Las expresiones validan la forma; no comprueban que el dato exista ni calculan dígitos de control.</p>
+<p>En cada sección, la tabla separa las cadenas válidas de las inválidas según el resultado de <code>matches()</code>, y el código muestra los seis métodos aplicados a un texto con varias apariciones. Los resultados aparecen como comentarios y se obtuvieron al ejecutar el programa.</p>
+{{DESARROLLO}}
+<h2>3. Conclusiones</h2>
+<p>Una expresión regular describe la forma de un dato, no su significado. Puede decir que <code>050012</code> tiene la forma de un código postal de Medellín, pero no que esa zona exista, ni que un ISBN tenga bien su dígito de control. Para eso hace falta otra validación.</p>
+<p>Lo difícil no fue lograr que aceptara los ejemplos correctos, sino que rechazara los incorrectos. <code>\d{2}/\d{2}/\d{4}</code> acepta cualquier fecha bien escrita, pero también <code>99/99/9999</code>. Para que solo pasaran fechas reales hubo que separar los días según el mes y tener en cuenta los años bisiestos.</p>
+<p>Probar con muchos casos mostró errores que a simple vista no aparecían. La contraseña no reconocía la Ñ como mayúscula, y la declaración de variables aceptaba <code>int x = 08;</code>, que Java rechaza. Ambos se corrigieron gracias a las pruebas.</p>
+<p>También quedó clara la diferencia entre los métodos. <code>matches()</code> sirve para validar un campo completo, como un formulario, y <code>find()</code> para encontrar datos dentro de un texto más largo. Por eso las expresiones no llevan <code>^</code> ni <code>$</code>: así una misma expresión sirve para las dos cosas.</p>
+<p>Las expresiones regulares ahorran muchas líneas de condiciones, pero las largas se vuelven difíciles de leer. Armarlas por partes con nombre, como en la declaración de variables, ayudó a entenderlas y a corregirlas sin repetir código.</p>
+
+<h2>4. Código fuente</h2>
+<p>El código completo se entrega en el archivo comprimido junto con este documento. Está organizado así:</p>
+<pre>src/
+├── Main.java                     inicia el programa
+├── classes/
+│   ├── Patron.java               datos de un patrón
+│   └── Evaluador.java            los seis métodos
+├── patrones/
+│   ├── Catalogo.java             reúne los patrones
+│   ├── PatronesColombia.java     placas, postal, teléfonos, barras, normas y precios
+│   ├── PatronesFechas.java       fecha y horas
+│   ├── PatronesWeb.java          correo, URL y contraseña
+│   ├── PatronesProgramacion.java variables, for y double
+│   ├── PatronesTexto.java        ISBN, nombres, diptongos e hiatos
+│   └── PatronesReferencias.java  IEEE y APA
+├── menus/
+│   ├── MenuPrincipal.java        lista de patrones
+│   └── MenuPatron.java           opciones de un patrón
+└── utils/
+    └── Entrada.java              lectura y validación</pre>
+<p>Para agregar un patrón se crea su método en la clase del tema y se incluye en <code>Catalogo</code>; los menús y el evaluador no cambian. Para ejecutarlo se abre el proyecto en IntelliJ con Java 21 y se corre <code>src/Main.java</code>.</p>
+</body></html>
